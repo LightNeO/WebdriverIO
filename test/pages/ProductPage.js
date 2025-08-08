@@ -68,6 +68,7 @@ export default class ProductPage extends BasePage {
         return $(ProductLocators.productNameOnDetailsPage);
     }
     
+    
     async open() {
         await this.navigateTo(this.url);
     }
@@ -80,6 +81,20 @@ export default class ProductPage extends BasePage {
     async searchForProduct(searchTerm = TestData.products.searchTerms[0]) {
         await this.setValue(this.searchInput, searchTerm);
         await this.clickElement(this.searchButton);
+    }
+
+    async filterProductsLowToHigh() {
+        await this.sortButton.selectByVisibleText('Price: Low to High');
+
+    }
+
+    async filterProductsHighToLow() {
+        await this.sortButton.selectByVisibleText('Price: High to Low');
+
+    }
+
+    async filterProductsByRating() {
+        await this.sortButton.selectByVisibleText('Top Rated');
     }
 
     async getTitleText() {

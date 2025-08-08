@@ -1,4 +1,7 @@
 # WebdriverIO Test Automation Framework - Test Task
+Test object - a website created by me using Python + vibecode with cursor
+Additional info: some test may fail because of the long server response from test website.
+                if it happened, launch them individualy by it.only
 
 A comprehensive test automation framework built with WebdriverIO using the Page Object Model (POM) design pattern, targeting a web application for gaming console products.
 
@@ -89,4 +92,4 @@ WebdriverIO/
 - Node.js ≥ 18.0.0
 - npm ≥ 8.0.0
 
-*Last updated: $(date) - Framework covers authentication, product browsing, and detail validation with robust error handling and reporting.*
+*Last updated: January 2025 - Framework covers authentication, product browsing, and detail validation with robust error handling and reporting.*

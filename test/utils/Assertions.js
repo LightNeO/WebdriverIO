@@ -99,4 +99,42 @@ export class CustomAssertions {
         const currentTitle = await browser.getTitle();
         expect(currentTitle, message).to.equal(expectedTitle);
     }
+
+    static async assertElementsText(elements, expectedTexts, message = 'Elements should have expected text values') {
+        expect(elements, 'Elements collection should exist').to.exist;
+        expect(expectedTexts, 'Expected texts should exist').to.exist;
+        
+        const elementCount = await elements.length;
+        expect(elementCount, 'Element count should match expected text count').to.equal(expectedTexts.length);
+        
+        for (let i = 0; i < elementCount; i++) {
+            const actualText = await elements[i].getText();
+            expect(actualText, `${message} - Element ${i + 1} should have correct text`).to.equal(expectedTexts[i]);
+        }
+    }
+
+    static async assertElementsTextSorted(elements, sortOrder = 'asc', message = 'Elements should be sorted correctly') {
+        expect(elements, 'Elements collection should exist').to.exist;
+        const elementCount = await elements.length;
+        expect(elementCount, 'At least one element should be found').to.be.greaterThan(0);
+        
+        const texts = [];
+        for (let i = 0; i < elementCount; i++) {
+            const text = await elements[i].getText();
+            texts.push(text);
+        }
+        
+        const sortedTexts = [...texts].sort((a, b) => {
+            // For price comparison, extract numeric values
+            const priceA = parseFloat(a.replace(/[$,]/g, ''));
+            const priceB = parseFloat(b.replace(/[$,]/g, ''));
+            
+            if (sortOrder === 'desc') {
+                return priceB - priceA;
+            }
+            return priceA - priceB;
+        });
+        
+        expect(texts, message).to.deep.equal(sortedTexts);
+    }
 }
