@@ -1,0 +1,17 @@
+export const ProductLocators = {
+    title: '.col-12.text-center h2',
+    searchInput: '#search-input',
+    searchButton: '[type="submit"]',
+    sortButton: '#sort-select',
+    productGrid: '#product-list',
+    productCards: '[data-qa="product-card"]',
+    productImages: '.card-img-top',
+    productNames: '.card-title',
+    productPrices: '.card-body p:nth-of-type(2)',
+    productRatings: '.card-body p:nth-of-type(3)',
+    viewDetailsButtons: '[data-qa="view-product-btn"]',
+    detailsPageProductName: '#product-name',
+    detailsPageProductPrice: '#product-price span',
+    detailsPageProductImage: '#product-image',
+    detailsPageProductRating: '#average-rating',
+};
